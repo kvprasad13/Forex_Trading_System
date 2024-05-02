@@ -26,6 +26,13 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Set Up
+  ### Clone the project using 
+    
+   ```
+   https://github.com/kvprasad13/Forex_Trading_System.git
+   
+   ```
 ## Enviromental Variables
 ```
 DB_URI= YOUR_MONGODB_CONNECTION_STRING
