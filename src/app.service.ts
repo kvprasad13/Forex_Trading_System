@@ -21,16 +21,21 @@ export class AppService {
   constructor(@Inject(CACHE_MANAGER) private readonly cacheManager: Cache, private readonly httpService: HttpService, @InjectModel(Account.name) private accountModel: mongoose.Model<Account>,) { }
 
   async getFXConversion(quoteId: string, fromCurrency: string, toCurrency: string, amount: number, user: User) {
+    const apiCurrencies = ["USD", "EUR", "GBP"];
+    if (!apiCurrencies.includes(fromCurrency) || !apiCurrencies.includes(toCurrency)) {
+      return { message: ` the currencies should be USD or EUR or GBP ` }
 
+    }
     // console.log('fromCurrency'+fromCurrency+' toCurrency'+toCurrency+" amount"+amount)
     const obj: { fx_rates: any, expiry_at: Date } = await this.cacheManager.get(quoteId);
     // console.log(obj);
+
     if (!obj) {
       return { message: " FX Rates are expired" };
     }
     const fx_rates = obj.fx_rates;
 
-    const fx_rate= fx_rates.find(fx => {
+    const fx_rate = fx_rates.find(fx => {
       if (fx.fromCurrency === fromCurrency && fx.toCurrency === toCurrency) return fx;
     })
     const rate = fx_rate.rate;
@@ -41,7 +46,7 @@ export class AppService {
     if (!account) {
       return { message: "No account found" };
     }
-   
+
     const fromBalance = account.balances.find((balance) => balance.currency === fromCurrency && balance.amount >= amount);
     const toBalance = account.balances.find((balance) => balance.currency === toCurrency);
     // console.log("fromBalance" + fromBalance);
@@ -54,7 +59,7 @@ export class AppService {
     if (toBalance)
       newToBalance = { ...toBalance, amount: toBalance.amount + rate * amount };
     else {
-      newToBalance = { currency: toCurrency, amount:  rate * amount };
+      newToBalance = { currency: toCurrency, amount: rate * amount };
     }
     // console.log('newToBalance');
     // console.log(newToBalance);
@@ -81,7 +86,7 @@ export class AppService {
   }
   async getSingleFromCurrencyToToCurrency(fromCurrency: string, toCurrency: string) {
     const apiKey = process.env.API_KEY;
-   
+
     const apiUrl = `https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${fromCurrency}&to_currency=${toCurrency}&apikey=${apiKey}`;
 
     try {

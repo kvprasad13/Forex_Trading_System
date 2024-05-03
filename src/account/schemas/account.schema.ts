@@ -17,7 +17,7 @@ export class Account extends Document {
     balances: { currency: string, amount: number }[];
 
     @Prop({ type: mongoose.Schema.Types.ObjectId, ref: 'User', unique: [true, 'Duplicate user id entered']  })
-    user_id: mongoose.Types.ObjectId;;
+    user_id: mongoose.Types.ObjectId;
 }
 
 export const AccountSchema = SchemaFactory.createForClass(Account);
