@@ -37,7 +37,7 @@
 
 ## Enviromental Variables
 ```
-DB_URI= YOUR_MONGODB_CONNECTION_STRING  'example : mongodb://username:password@hostname:port/database_name'
+DB_URI= YOUR_MONGODB_CONNECTION_STRING  'example : mongodb+srv://username:password@cluster0.zvyixqc.mongodb.net/finmo-backend-assignment?retryWrites=true&w=majority'
 JWT_SECRET = YOUR_JWT_SECRET  'example : 123456'
 JWT_EXPIRES= YOUR_JWT_EXPIRES  'example : 3d'  
 API_KEY = YOUR_FXRATE_API_KEY   'example : LJFLS83547RWJ5L3'
@@ -63,4 +63,10 @@ $ npm run start:dev
 Due to the 25 requests fx rates per daily constraint to the https://www.alphavantage.co/ . I just cached only [ "USD","EUR","GPB" ]. Please make fx conversion for only those.
 
 After making GET request to the /fx-rates, with in 30 sec make POST request to the /fx-conversion. Otherwise you will get response as {message : "fx-rates are expired"}.
+```
+
+## Swagger documentation
+
+```
+you can access a very good documentation at http://localhost:3000/api
 ```
