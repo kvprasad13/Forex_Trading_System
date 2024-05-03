@@ -26,6 +26,20 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Set Up
+  ### Clone the project using 
+    
+   ```
+   https://github.com/kvprasad13/Forex_Trading_System.git
+   
+   ```
+## Enviromental Variables
+```
+DB_URI= YOUR_MONGODB_CONNECTION_STRING
+JWT_SECRET = YOUR_JWT_SECRET
+JWT_EXPIRES= YOUR_JWT_EXPIRES
+API_KEY = YOUR_FXRATE_API_KEY
+```
 ## Installation
 
 ```bash
@@ -35,39 +49,16 @@ $ npm install
 ## Running the app
 
 ```bash
-# development
-$ npm run start
 
-# watch mode
+# To start server
 $ npm run start:dev
 
-# production mode
-$ npm run start:prod
 ```
 
-## Test
-
+## Note 
 ```bash
-# unit tests
-$ npm run test
 
-# e2e tests
-$ npm run test:e2e
+Due to the 25 requests fx rates per daily constraint to the https://www.alphavantage.co/ . I just cached only [ "USD","EUR","GPB" ]. Please make fx conversion for only those.
 
-# test coverage
-$ npm run test:cov
+After making GET request to the /fx-rates, with in 30 sec make POST request to the /fx-conversion. Otherwise you will get response as {message : "fx-rates are expired"}.
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
