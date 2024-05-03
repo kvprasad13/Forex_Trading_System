@@ -5,7 +5,7 @@ import { Controller, Get, Post, Body, UseGuards, Req } from '@nestjs/common';
 import { AccountService } from './account.service';
 import { AuthGuard } from '@nestjs/passport';
 import { currencies } from 'src/constants';
-import { ApiBadRequestResponse, ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiCreatedResponse, ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { topUpReqDto } from './dto/topUpReq.dto';
 
 
@@ -14,7 +14,7 @@ import { topUpReqDto } from './dto/topUpReq.dto';
 @Controller('accounts')
 export class AccountController {
     constructor(private readonly accountService: AccountService) { }
-    @ApiOkResponse({ description: "Top up done Successfully", type: Object })
+    @ApiCreatedResponse({ description: "Top up done Successfully", type: Object })
 
     @ApiBadRequestResponse({ description: "Top up failed. Try again" })
     @Post('topup')

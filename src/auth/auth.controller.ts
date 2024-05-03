@@ -3,7 +3,7 @@ import { Controller, Body, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { SignUpDto } from './dto/signup.dto';
 import { LoginDto } from './dto/login.dto';
-import { ApiBadRequestResponse, ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
 import { AccessTokenDto } from './dto/accessToken.dto';
 
 
@@ -27,7 +27,7 @@ export class AuthController {
     }
 
     @Post('/login')
-    @ApiOkResponse({
+    @ApiCreatedResponse({
         description: "User is logged in",
         type: AccessTokenDto
     })
