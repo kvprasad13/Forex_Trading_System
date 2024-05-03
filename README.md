@@ -54,3 +54,11 @@ $ npm install
 $ npm run start:dev
 
 ```
+
+## Note 
+```bash
+
+Due to the 25 requests fx rates per daily constraint to the https://www.alphavantage.co/ . I just cached only [ "USD","EUR","GPB" ]. Please make fx conversion for only those.
+
+After making GET request to the /fx-rates, with in 30 sec make POST request to the /fx-conversion. Otherwise you will get response as {message : "fx-rates are expired"}.
+```
