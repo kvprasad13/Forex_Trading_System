@@ -37,10 +37,10 @@
 
 ## Enviromental Variables
 ```
-DB_URI= YOUR_MONGODB_CONNECTION_STRING
-JWT_SECRET = YOUR_JWT_SECRET
-JWT_EXPIRES= YOUR_JWT_EXPIRES
-API_KEY = YOUR_FXRATE_API_KEY
+DB_URI= YOUR_MONGODB_CONNECTION_STRING  'example : mongodb://username:password@hostname:port/database_name'
+JWT_SECRET = YOUR_JWT_SECRET  'example : 123456'
+JWT_EXPIRES= YOUR_JWT_EXPIRES  'example : 3d'  
+API_KEY = YOUR_FXRATE_API_KEY   'example : LJFLS83547RWJ5L3'
 ```
 ## Installation
 
