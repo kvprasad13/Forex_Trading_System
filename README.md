@@ -33,6 +33,8 @@
    https://github.com/kvprasad13/Forex_Trading_System.git
    
    ```
+### Add .env file to the project
+
 ## Enviromental Variables
 ```
 DB_URI= YOUR_MONGODB_CONNECTION_STRING
